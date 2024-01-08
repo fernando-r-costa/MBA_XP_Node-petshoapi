@@ -1,6 +1,7 @@
 import express from "express"
 import cors from "cors"
 import winston from "winston"
+import 'dotenv/config'
 import proprietariosRouter from "./routes/proprietario.route.js"
 import animaisRouter from "./routes/animal.route.js"
 
