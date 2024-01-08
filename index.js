@@ -2,6 +2,7 @@ import express from "express"
 import cors from "cors"
 import winston from "winston"
 import proprietariosRouter from "./routes/proprietario.route.js"
+import animaisRouter from "./routes/animal.route.js"
 
 const { combine, timestamp, label, printf } = winston.format
 const myFormat = printf(({ level, message, label, timestamp }) => {

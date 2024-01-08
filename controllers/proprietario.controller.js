@@ -1,4 +1,4 @@
-
+import ProprietarioService from "../services/proprietario.service.js"
 
 async function createProprietario(req, res, next) {
     try {

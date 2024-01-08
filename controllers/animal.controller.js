@@ -1,4 +1,4 @@
-
+import AnimalService from "../services/animal.service.js"
 
 async function createAnimal(req, res, next) {
     try {
