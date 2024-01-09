@@ -10,7 +10,10 @@ async function updateProprietario(proprietario) {
 }
 
 async function deleteProprietario(id) {
-    //if ()
+    const getAnimaisByProprietarioId = await AnimalRepository.getAnimaisByProprietarioId(id)
+    if (getAnimaisByProprietarioId.length > 0) {
+        throw new Error("Proprietário possui animais cadastrados e não pode ser deletado")
+    }
     await ProprietarioRepository.deleteProprietario(id)
 }
 

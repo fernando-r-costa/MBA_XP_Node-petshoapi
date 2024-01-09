@@ -17,7 +17,10 @@ async function insertProprietario(proprietario) {
 async function updateProprietario(proprietario) {
     const conn = await connect()
     try {
-
+        const sql = "UPDATE proprietarios SET nome = $1, telefone = $2 WHERE proprietario_id = $3 RETURNING *"
+        const values = [proprietario.nome, proprietario.telefone, proprietario.proprietario_id]
+        const res = await conn.query(sql, values)
+        return res.rows[0]
     } catch (err) {
         throw err
     } finally {
@@ -28,7 +31,7 @@ async function updateProprietario(proprietario) {
 async function deleteProprietario(id) {
     const conn = await connect()
     try {
-
+        await conn.query("DELETE FROM proprietarios WHERE proprietario_id = $1", [id])
     } catch (err) {
         throw err
     } finally {
@@ -39,7 +42,8 @@ async function deleteProprietario(id) {
 async function getProprietarios() {
     const conn = await connect()
     try {
-
+        const res = await conn.query("SELECT * FROM proprietarios")
+        return res.rows
     } catch (err) {
         throw err
     } finally {
@@ -50,7 +54,8 @@ async function getProprietarios() {
 async function getProprietario(id) {
     const conn = await connect()
     try {
-
+        const res = await conn.query("SELECT * FROM proprietarios WHERE proprietario_id = $1", [id])
+        return res.rows[0]
     } catch (err) {
         throw err
     } finally {
