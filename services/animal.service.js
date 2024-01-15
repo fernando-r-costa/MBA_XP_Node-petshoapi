@@ -2,7 +2,7 @@ import AnimalRepository from "../repositories/animal.repository.js"
 import ProprietarioRepository from "../repositories/proprietario.repository.js"
 
 async function createAnimal(animal) {
-    const getProprietario = await ProprietarioRepository.getProprietario(animal.proprietario_id)
+    const getProprietario = await ProprietarioRepository.getProprietario(animal.proprietarioId)
     if (!getProprietario) {
         throw new Error("Proprietário ID não cadastrado")
     }
@@ -10,7 +10,7 @@ async function createAnimal(animal) {
 }
 
 async function updateAnimal(animal) {
-    const getProprietario = await ProprietarioRepository.getProprietario(animal.proprietario_id)
+    const getProprietario = await ProprietarioRepository.getProprietario(animal.proprietarioId)
     if (!getProprietario) {
         throw new Error("Proprietário ID não cadastrado")
     }
@@ -21,9 +21,9 @@ async function deleteAnimal(id) {
     await AnimalRepository.deleteAnimal(id)
 }
 
-async function getAnimais(proprietario_id) {
-    if (proprietario_id) {
-        return await AnimalRepository.getAnimaisByProprietarioId(proprietario_id)
+async function getAnimais(proprietarioId) {
+    if (proprietarioId) {
+        return await AnimalRepository.getAnimaisByProprietarioId(proprietarioId)
     }
     return await AnimalRepository.getAnimais()
 }
