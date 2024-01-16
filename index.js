@@ -4,6 +4,7 @@ import winston from "winston"
 import 'dotenv/config'
 import proprietariosRouter from "./routes/proprietario.route.js"
 import animaisRouter from "./routes/animal.route.js"
+import servicosRouter from "./routes/servico.route.js"
 
 const { combine, timestamp, label, printf } = winston.format
 const myFormat = printf(({ level, message, label, timestamp }) => {
@@ -27,6 +28,7 @@ app.use(express.json())
 app.use(cors())
 app.use("/proprietario", proprietariosRouter)
 app.use("/animal", animaisRouter)
+app.use("/servico", servicosRouter)
 app.use((err, req, res, next) => {
     logger.error(`${req.method} ${req.baseUrl} - ${err.message}`)
     res.status(400).send({ error: err.message })
